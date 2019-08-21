@@ -14,7 +14,7 @@ jobs:
       uses: actions/docker/tag@master
       env:
         APPLICATION_NAME: gcloud-example-app
-        PROJECT_ID: fifth-byte-211221
+        PROJECT_ID: unity-ads-cpi-direct-stg
       with:
         args: gcloud-example-app gcr.io/$PROJECT_ID/$APPLICATION_NAME
     - name: Set Credential Helper for Docker
@@ -32,8 +32,8 @@ jobs:
     - name: Load GKE kube credentials
       uses: actions/gcloud/cli@master
       env:
-        CLUSTER_NAME: workflow-example-cluster
-        PROJECT_ID: fifth-byte-211221
+        CLUSTER_NAME: unity-ads-cpi-gke-stg-usc1
+        PROJECT_ID: unity-ads-cpi-direct-stg
       with:
         args: container clusters get-credentials $CLUSTER_NAME --zone us-central1-a
           --project $PROJECT_ID
@@ -41,7 +41,7 @@ jobs:
       uses: actions/gcloud/cli@master
       env:
         APPLICATION_NAME: gcloud-example-app
-        PROJECT_ID: fifth-byte-211221
+        PROJECT_ID: unity-ads-cpi-direct-stg
       with:
         entrypoint: sh
         args: -c "docker push gcr.io/$PROJECT_ID/$APPLICATION_NAME"
@@ -50,7 +50,7 @@ jobs:
       env:
         APPLICATION_NAME: gcloud-example-app
         DEPLOYMENT_NAME: app-example
-        PROJECT_ID: fifth-byte-211221
+        PROJECT_ID: unity-ads-cpi-direct-stg
       with:
         entrypoint: sh
         args: -l -c "SHORT_REF=$(echo ${GITHUB_SHA} | head -c7) && cat ${{ github.workspace
