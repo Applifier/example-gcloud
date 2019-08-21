@@ -1,0 +1,16 @@
+on: push
+name: Run tests
+runs-on: ubuntu-latest
+jobs:
+  run-tests:
+    steps:
+      - name: My first step
+        uses: actions/hello-world@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_VAR1: a_variable
+        with:
+          first_name: Mona
+          middle_name: The
+          last_name: Octocat
+      - run: echo All Done!
