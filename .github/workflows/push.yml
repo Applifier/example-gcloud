@@ -58,6 +58,7 @@ jobs:
     - name: Verify GKE deployment
       uses: docker://gcr.io/cloud-builders/kubectl
       env:
+        PROJECT_ID: unity-ads-cpi-direct-stg
         CLOUDSDK_COMPUTE_ZONE: us-central1
         CLOUDSDK_CONTAINER_CLUSTER: unity-ads-cpi-gke-stg-usc1
         DEPLOYMENT_NAME: app-example
