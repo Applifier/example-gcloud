@@ -35,7 +35,7 @@ jobs:
         CLUSTER_NAME: unity-ads-cpi-gke-stg-usc1
         PROJECT_ID: unity-ads-cpi-direct-stg
       with:
-        args: container clusters get-credentials $CLUSTER_NAME --zone us-central1-a
+        args: container clusters get-credentials $CLUSTER_NAME --zone us-central1
           --project $PROJECT_ID
     - name: Push image to GCR
       uses: actions/gcloud/cli@master
